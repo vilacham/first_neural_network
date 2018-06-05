@@ -63,6 +63,7 @@ class NeuralNetwork(object):
             Arguments
             ---------
             final_output: output from forward pass
+            hidden_output: output from hidden layer
             y: target (i.e. label) batch
             delta_w_i_h: change in weights from input to hidden layers
             delta_w_h_o: change in weights from hidden to output layers
@@ -119,7 +120,7 @@ class NeuralNetwork(object):
         
         # Output layer
         final_inputs = np.dot(hidden_outputs, self.w_hidden_output)
-        final_outputs =  final_inputs
+        final_outputs = final_inputs
         
         return final_outputs
 
