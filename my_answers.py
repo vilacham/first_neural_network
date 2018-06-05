@@ -107,21 +107,19 @@ class NeuralNetwork(object):
         self.w_input_hidden += self.lr * delta_w_i_h / n_records
 
     def run(self, features):
-        ''' Run a forward pass through the network with input features 
+        """ Run a forward pass through the network with input features 
         
             Arguments
             ---------
-            features: 1D array of feature values
-        '''
+            features: 1D array (feature values)
+        """
+        # Hidden layer
+        hidden_inputs = np.dot(features, self.w_input_hidden)
+        hidden_outputs = self.activation_function(hidden_inputs)
         
-        #### Implement the forward pass here ####
-        # TODO: Hidden layer - replace these values with the appropriate calculations.
-        hidden_inputs = None # signals into hidden layer
-        hidden_outputs = None # signals from hidden layer
-        
-        # TODO: Output layer - Replace these values with the appropriate calculations.
-        final_inputs = None # signals into final output layer
-        final_outputs = None # signals from final output layer 
+        # Output layer
+        final_inputs = np.dot(hidden_outputs, self.w_hidden_output)
+        final_outputs =  final_inputs
         
         return final_outputs
 
