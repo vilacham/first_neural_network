@@ -125,9 +125,7 @@ class NeuralNetwork(object):
         return final_outputs
 
 
-#########################################################
-# Set your hyperparameters here
-##########################################################
+# Set hyperparameters below
 iterations = 100
 learning_rate = 0.1
 hidden_nodes = 2
