@@ -52,7 +52,7 @@ class NeuralNetwork(object):
 
         # Output layer
         final_inputs = np.dot(hidden_outputs, self.w_hidden_output)
-        final_outputs = self.activation_function(final_inputs)
+        final_outputs = final_inputs
         
         return final_outputs, hidden_outputs
 
@@ -78,7 +78,7 @@ class NeuralNetwork(object):
         
         # TODO: Backpropagated error terms - Replace these values with your calculations.
         output_error_term = None
-        
+
         hidden_error_term = None
         
         # Weight step (input to hidden)
