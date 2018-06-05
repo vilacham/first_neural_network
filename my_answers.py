@@ -88,18 +88,23 @@ class NeuralNetwork(object):
         delta_w_h_o += output_error_term * hidden_output[:,  None]
         return delta_w_i_h, delta_w_h_o
 
-    def update_weights(self, delta_weights_i_h, delta_weights_h_o, n_records):
-        ''' Update weights on gradient descent step
+    def update_weights(self, delta_w_i_h, delta_w_h_o, n_records):
+        """ Update weights on gradient descent step
          
             Arguments
             ---------
-            delta_weights_i_h: change in weights from input to hidden layers
-            delta_weights_h_o: change in weights from hidden to output layers
+            delta_w_i_h: change in weights from input to hidden layers
+            delta_w_h_o: change in weights from hidden to output layers
             n_records: number of records
-
-        '''
-        self.w_hidden_output += None # update hidden-to-output weights with gradient descent step
-        self.w_input_hidden += None # update input-to-hidden weights with gradient descent step
+        """
+        # Update hidden-to-output weights with gradient descent step (by
+        # multiplying the learning rate by the respective weight step and
+        # dividing this product by the number of records, and finally adding
+        # the result to the respective weights)
+        self.w_hidden_output += self.lr * delta_w_h_o / n_records
+        # Update input-to-hidden weights with gradient descent step (same
+        # operations as above)
+        self.w_input_hidden += self.lr * delta_w_i_h / n_records
 
     def run(self, features):
         ''' Run a forward pass through the network with input features 
